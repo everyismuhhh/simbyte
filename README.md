@@ -1,2 +1,2 @@
 # simbyte
-extendable life simulation web program
+an extendable life simulation web program
