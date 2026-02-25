@@ -233,7 +233,6 @@ let eventPool = [
         description: "You found a dollar while walking down the street.",
         chance: 0.2,
         minAge: 4,
-        maxAge: 50, //at that point, a dollar wont matter
         effect: (p) => {
             p.money += 1;
             p.happiness += 5;
@@ -261,6 +260,17 @@ let eventPool = [
             p.effects.push(sickness["fever"])
             noticeSFX.play();
             print("You spent a week in bed sweating.");
+        }
+    }),
+    new LifeEvent({
+        title: "Thief!",
+        description: "While walking down the street, a man pickpocketed you and stole 10 dollars!.",
+        chance: 0.1,
+        minAge: 4,
+        effect: (p) => {
+            p.money -= 10;
+            p.happiness -= 5;
+            print("Nobody saw him.");
         }
     }),
 ];
