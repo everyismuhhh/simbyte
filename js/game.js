@@ -41,7 +41,7 @@ function begin() {
     your.surname = your.family[rand_int(2)]["person"].surname;
     your.birth_reason = birth_reasons[rand_int(birth_reasons.length)];
     your.country = countries[rand_int(countries.length)];
-    header("Age: 0. Welcome to simbyte.");
+    header("Age: 0. Hello oxycodone (if youre not oxycodone, LEAVE LEAVE NOW NOW AAAAAAA)." );
     print(`I was born ${your.gender}. My name is ${your.name} ${your.surname}.`);
     print(`I was born in ${your.country}. on the fateful day of ${your.birthday.toLocaleString('default', { month: 'long' })} ${your.birthday.getDate()}, as a ${new ZodiacSign(your.birthday).sign}. ${your.birth_reason}`);
     space();
