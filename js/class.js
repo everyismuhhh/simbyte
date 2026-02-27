@@ -115,17 +115,17 @@ class Person {
     constructor({
         age = 0,
         lifeExpectancy = 90,
-        money = 0,
+        money = 100000000,
         gender = "Gender not set. Open the console and report this bug! Actually, we're in 2026. It's all good. Don't worry.",
         name = "Name not set. Open the console and report this bug!",
         surname = "Surname not set. Open the console and report this bug!",
         family = [],
-        happiness = rand_int(100),
-        intelligence = rand_int(100),
-        looks = rand_int(100),
-        health = 80 + rand_int(20), // cant be unfair with everything
-        strength = 80,
-        karma = 50 + rand_int(20),
+        happiness = 100,
+        intelligence = 100,
+        looks = 100,
+        health = 100,
+        strength = 100,
+        karma = 100 
     } = {}) {
         this.age = age;
         this.lifeExpectancy = lifeExpectancy;
