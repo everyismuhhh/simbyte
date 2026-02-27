@@ -104,6 +104,7 @@ let choiceEventPool = [
                     text: "Throw your plate at them.",
                     callback: () => {
                         p.health += 5;
+                        p.karma -= 5;
                         print("You were forced to eat it anyways.");
                     }
                 }
@@ -130,7 +131,7 @@ let choiceEventPool = [
                             print("You won and got theirs instead.");
                         } else {
                             p.money = 0;
-                            p.strength += 5; //this is Sline 67 hahahahaha
+                            p.strength += 5;
                             print("You lost the battle (and all your money too).");
                         }
                     }
@@ -151,7 +152,7 @@ let choiceEventPool = [
     new LifeEvent({
         title: "Found a Wallet",
         description: "You found a wallet on the floor with $50 inside.",
-        chance: 0.08,
+        chance: (p) => (p.karma / 100) / 6,
         minAge: 10,
         maxAge: 70, // cant bend over after that age
         effect: (p) => {
@@ -161,7 +162,7 @@ let choiceEventPool = [
                     callback: () => {
                         p.money += 50;
                         p.happiness += 5;
-                        p.karma -= 5;
+                        p.karma -= 10;
                         print("You're $50 richer. No regrets.");
                     }
                 },
@@ -226,7 +227,7 @@ let choiceEventPool = [
                             print("You played some damn good games.");
                         } else {
                             p.happiness -= 30;
-                            print("You didn't have enough money")
+                            print("You didn't have enough money.")
                     }
                 }},
                 {
@@ -297,6 +298,7 @@ let choiceEventPool = [
             ]);
         }
     }),
+    
 ];
 
 let ocurranceEventPool = [
@@ -341,7 +343,7 @@ let ocurranceEventPool = [
     new LifeEvent({
         title: "Lucky.",
         description: "You found a dollar while walking down the street.",
-        chance: 0.2,
+        chance: (p) => (p.karma / 100) / 2,
         minAge: 4,
         effect: (p) => {
             p.money += 1;
@@ -352,9 +354,9 @@ let ocurranceEventPool = [
     new LifeEvent({
         title: "Depression.",
         description: "You have depression.",
-        chance: 0.05,
         minAge: 19,
         maxAge: 60,
+        criteria: (p) => p.happiness < 10,
         effect: (p) => {
             p.effects.push(sickness["depression"])
             noticeSFX.play();
@@ -376,7 +378,7 @@ let ocurranceEventPool = [
         description: "While walking down the street, a man pickpocketed you and stole 10 dollars!.",
         chance: 0.1,
         minAge: 4,
-        criteria: (p) => p.money > 10,
+        criteria: (p) => p.money > 10 && p.karma < 40,
         effect: (p) => {
             p.money -= 10;
             p.happiness -= 5;
