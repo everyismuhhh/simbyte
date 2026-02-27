@@ -125,7 +125,7 @@ class Person {
         looks = 100,
         health = 100,
         strength = 100,
-        karma = 100 
+        karma = 100,
     } = {}) {
         this.age = age;
         this.lifeExpectancy = lifeExpectancy;
